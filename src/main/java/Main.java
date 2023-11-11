@@ -1,20 +1,19 @@
 import java.sql.*;
 
 public class Main {
-    private final static String user = "postgres";
-    private final static String password = "maks2004";
+    private static final DatabaseProperties properties = PropertiesFactory.getProperties();
 
     public static void main(String[] args) {
         try {
+
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:8080/training_hw_5", user, password);
+            Connection connection = DriverManager.getConnection(properties.getUrl(), properties.getLogin(), properties.getPassword());
 
             if (connection != null) {
                 getData(connection, "audit_department");
             } else {
                 System.out.println("not connected");
             }
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -43,6 +42,8 @@ public class Main {
             System.out.println("error");
         }
     }
+
+
 
 }
 
