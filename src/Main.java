@@ -1,4 +1,3 @@
-import javax.xml.transform.Result;
 import java.sql.*;
 
 public class Main {
@@ -11,7 +10,6 @@ public class Main {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:8080/training_hw_5", user, password);
 
             if (connection != null) {
-                System.out.println("Connected");
                 getData(connection, "audit_department");
             } else {
                 System.out.println("not connected");
@@ -42,7 +40,7 @@ public class Main {
             }
 
         } catch (Exception e) {
-
+            System.out.println("error");
         }
     }
 
